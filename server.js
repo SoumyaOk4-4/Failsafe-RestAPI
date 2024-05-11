@@ -9,10 +9,11 @@ const app = express();
 const port = process.env.PORT;
 const mongoUrl = process.env.MONGO_URL;
 
+//middlewares
 app.use(cors());
 app.use(express.json());
 
-//schema
+//user schema
 const userSchema = mongoose.Schema({
     name: String,
     email: String,
@@ -21,7 +22,7 @@ const userSchema = mongoose.Schema({
     timestamps: true
 });
 
-//creating model
+//db model
 const userModel = mongoose.model("user", userSchema);
 
 // CRUD
