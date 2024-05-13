@@ -56,7 +56,7 @@ app.post("/create", async (req, res) => {
 app.put("/update", async (req, res) => {
     try {
         const { _id, password, ...rest } = req.body;
-        if (password) {//password update
+        if (password) {//if a password is provided in the request
             //password hashing
             const hashedPassword = await bcryptjs.hash(password, 10);
             const userData = await userModel.updateOne({ _id: _id }, { password: hashedPassword, ...rest });
