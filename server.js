@@ -61,7 +61,7 @@ app.put("/update", async (req, res) => {
             const hashedPassword = await bcryptjs.hash(password, 10);
             const userData = await userModel.updateOne({ _id: _id }, { password: hashedPassword, ...rest });
             res.json({ message: "Update", success: true, data: userData });
-        } else { // others update
+        } else { // if password is not provided
             const userData = await userModel.updateOne({ _id: _id }, ...rest);
             res.json({ message: "Update", success: true, data: userData });
         }
